@@ -1,7 +1,6 @@
 public class OOPSBannerApp{
- public static void main(String args[]){
-public static String[] getOPattern() {
-    return new String[] {
+	public static String[] getOPattern() {
+		return new String[] {
         "   ***   ",
         " **   ** ",
         "**     **",
@@ -46,6 +45,5 @@ public static void main(String[] args) {
  
         System.out.println(oPattern[i] + "  " + oPattern[i] + "  " + pPattern[i] + "  " + sPattern[i]);
     }
-}
 }
 }
