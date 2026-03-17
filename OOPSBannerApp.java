@@ -1,21 +1,40 @@
 public class OOPSBannerApp{
-	static class CharacterPatternMap {
-	}
-	public static CharacterPatternMap[] createCharacterPatternMaps() {
-		return null;
-	}
-	public static String[] getCharacterPattern(char ch, CharacterPatternMap[] charMaps) {
-		return null;
-	}
-	public static void printMessage(String message, CharacterPatternMap[] charMaps){
-	}
+
+    static class CharacterPatternMap {
+        private char character;
+        private String[] pattern;
+
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() { 
+            return pattern;
+        }
+    }
+
     public static void main(String[] args) {
-		CharacterPatternMap[] charMaps = createCharacterPatternMaps();
-		String message = "OOPS";
-		printMessage(message, charMaps);
+        CharacterPatternMap[] letters = {
+            new CharacterPatternMap('O', new String[]{" *** ", "*   *", "*   *", "*   *", " *** "}),
+            new CharacterPatternMap('O', new String[]{" *** ", "*   *", "*   *", "*   *", " *** "}),
+            new CharacterPatternMap('P', new String[]{"**** ", "*   *", "**** ", "*    ", "*    "}),
+            new CharacterPatternMap('S', new String[]{" ****", "*    ", " *** ", "    *", "**** "})
+        };
+
+        for (int row = 0; row < 5; row++) {
+            StringBuilder line = new StringBuilder();
+            for (CharacterPatternMap letter : letters) {
+                line.append(letter.getPattern()[row]).append("  ");
+            }
+            System.out.println(line);
+        }
     }
 }
-				
 					
 
 
