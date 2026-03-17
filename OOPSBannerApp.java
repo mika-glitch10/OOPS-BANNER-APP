@@ -1,38 +1,51 @@
-public class OOPSBannerApp{
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-    static class CharacterPatternMap {
-        private char character;
-        private String[] pattern;
+public class OOPSBannerApp {
 
-        public CharacterPatternMap(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
+    private static Map<Character, String[]> buildPatternMap() {
+        Map<Character, String[]> map = new LinkedHashMap<>();
 
-        public char getCharacter() {
-            return character;
-        }
+        map.put('O', new String[]{
+            " *** ",
+            "*   *",
+            "*   *",
+            "*   *",
+            " *** "
+        });
+ 
+        map.put('P', new String[]{
+            "**** ",
+            "*   *",
+            "**** ",
+            "*    ",
+            "*    "
+        });
 
-        public String[] getPattern() { 
-            return pattern;
+        map.put('S', new String[]{
+            " ****",
+            "*    ",
+            " *** ",
+            "    *",
+            "**** "
+        });
+
+        return map;
+    }
+
+    public static void renderBanner(String word) {
+        Map<Character, String[]> patternMap = buildPatternMap();
+        for (int row = 0; row < 5; row++) {
+            StringBuilder line = new StringBuilder();
+            for (char ch : word.toCharArray()) {
+                line.append(patternMap.get(ch)[row]).append("  ");
+            }
+            System.out.println(line);
         }
     }
 
     public static void main(String[] args) {
-        CharacterPatternMap[] letters = {
-            new CharacterPatternMap('O', new String[]{" *** ", "*   *", "*   *", "*   *", " *** "}),
-            new CharacterPatternMap('O', new String[]{" *** ", "*   *", "*   *", "*   *", " *** "}),
-            new CharacterPatternMap('P', new String[]{"**** ", "*   *", "**** ", "*    ", "*    "}),
-            new CharacterPatternMap('S', new String[]{" ****", "*    ", " *** ", "    *", "**** "})
-        };
-
-        for (int row = 0; row < 5; row++) {
-            StringBuilder line = new StringBuilder();
-            for (CharacterPatternMap letter : letters) {
-                line.append(letter.getPattern()[row]).append("  ");
-            }
-            System.out.println(line);
-        }
+        renderBanner("OOPS");
     }
 }
 					
